@@ -9,11 +9,10 @@ const API_URL="http://localhost:8080/api/itens/inicio";
 export class ItemPedidoService {
 
   constructor(private httpClient : HttpClient) {
-    console.log('Criando ItemPedidoService');
   }
 
   listaItens() {
-    console.log('ItemPedidoService - listaItens');
+  //  console.log('ItemPedidoService - listaItens');
     return this.httpClient.get<Produto[]> (API_URL);
   }
 }
