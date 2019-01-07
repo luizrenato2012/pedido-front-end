@@ -1,0 +1,34 @@
+<div class="container">
+  <div align="center">
+    <font size=5 color="green"> Vidraçaria Tia Gusta </font>
+  </div>
+
+  <div class="table-wrapper-scroll-y" id="table_produtos">
+      <div class="list-group">
+        <app-item-pedido-detalhe  [produtos]="produtos"></app-item-pedido-detalhe>
+     </div>
+  </div>
+  
+  <!--Div do scroll -->
+  <a class="list-group-item" id="lnkCarrinho"> <!--Sera outro modal -->
+    <table bgcolor="grey">
+      <tbody>
+        <tr>
+          <td rowspan="3" id="cel1"><font size=2> CARRINHO </font></td>
+        <tr>
+          <td id="cel"><font id="txtTotalCarrinho" size=2 color="red"> R$ 0,00 </font></td>
+        </tr>
+      </tbody>
+    </table>
+  </a>
+  
+  <button class="list-group-item" id="btnCarrinho">
+    <div class="row"style="padding: 10px">
+      <div class="col-md-1">CARRINHO</div>
+      <div class="col-md-2" style="color:red; padding-left:25px;">R$ 1.000,00</div>
+      <div class="col-md-4"></div>
+      <div class="col-md-5"></div>
+    </div>
+  </button>
+</div>
+<!--Div do containner -->

@@ -1,0 +1,78 @@
+<div *ngFor="let item of produtos">
+  <a href="#" class="list-group-item comando" data-toggle="modal" data-target="#myModal" (click)="seleciona(item)">
+    <input type="hidden" name="id_item" value="{item.idItem}" />
+    <table>
+      <tbody>
+        <tr>
+          <td rowspan="3"><img [src]="item.imagemSafe" alt="Sem imagem" width=50 height=40></td>
+       <!--  <app-item-pedido-imagem imagem="{{item.imageSafe}}"></app-item-pedido-imagem> -->
+          <td>
+            <font size=2> {{item.nome}} </font>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <font size=1> {{item.descricao}} </font>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <font size=1 color="red"> {{item.valorUnitario}} </font>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" align="center">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detalhe</h4>
+      </div>
+      <div class="modal-body">
+        <div class="wrap-input3 input3-select">
+          <div align="center">
+            <label id="lblNome">{{produtoSelecionado.nome}} </label>
+          </div>
+          <img id="imgItem" src="assets/img/vidro.jpeg" alt="some text" width=120 height=90><br>
+          <font size=1 id="lblDescricao">{{produtoSelecionado.descricao}}</font>
+
+          <table>
+            <tbody>
+              <tr>
+                <td id="cel">
+                  <font size=2 color="red" id="lblPreco">{{produtoSelecionado.valorUnitario}} </font>
+                </td>
+                <td id="cel1">
+                  <div data-app="product.quantity" id="quantidade">
+                    <span id="span_erro_carrinho" class="blocoAlerta" style="display: none;">Selecione uma produto</span>
+                    <input type="button" id="btnMinus" value='-'  (click)="diminuiQuantidade()"/>
+                    <input type="text" id="edtQuantidade" name="edtQuantidade" class="text" style="text-align: center"
+                      size="1" value="0" maxlength="5" [value]="produtoSelecionado.quantidade"/>
+                    <input type="button" id="btnPlus" value='+' (click)="aumentaQuantidade()"/>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td id="cel">
+                  <font size=2 color="red" id="lblValorTotal">{{produtoSelecionado.valorTotal}} </font>
+                </td>
+                <td id="cel1">
+                   <a href="#" id="btnAdiciona" class="list-group-item" data-toggle="modal" data-target="#myModal">
+                    <div align="center">
+                      <img src="assets/img/adicionar.jpg" alt="sem imagem no momento" width="15" height="15">
+                    </div>
+                  </a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

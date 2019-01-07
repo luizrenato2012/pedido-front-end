@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ItemPedidoModule } from './item-pedido/item-pedido.module';
@@ -12,7 +12,10 @@ import { ItemPedidoModule } from './item-pedido/item-pedido.module';
     BrowserModule,
     ItemPedidoModule
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
