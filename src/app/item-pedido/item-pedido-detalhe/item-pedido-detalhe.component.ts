@@ -10,7 +10,7 @@ export class ItemPedidoDetalheComponent implements OnInit {
 
   @Input()
   produtos: Produto[];
-  produtoSelecionado: Produto;
+  produtoSelecionado: Produto = new Produto();
   
   constructor() { 
   }

@@ -1,6 +1,7 @@
 import { ItemPedido } from "./item-pedido";
+import { Produto } from './produto';
 
 export class RespostaTotaliza {
-    itens: ItemPedido[];
+    itens: Produto[];
     valorCarrinho: number;
 }
