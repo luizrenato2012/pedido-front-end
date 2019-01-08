@@ -1,11 +1,12 @@
 export class ItemPedido {
     
     id: number;
-	idProduto : number;
-	numero: number;
+    idPedido:number;
 	valorUnitario: number; 
 	quantidade: number; 
     valorTotal: number;
+	idProduto : number;
+	numero: number;
     
     constructor() {
         
