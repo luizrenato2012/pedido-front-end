@@ -8,7 +8,14 @@ export class ItemPedido {
 	idProduto : number;
 	numero: number;
     
-    constructor() {
-        
+    constructor(idItem:number, idProduto: number, numero: number, valorUnitario: number,
+        quantidade: number, valorTotal: number) {
+      this.id =idItem,
+      this.idProduto = idProduto,
+      numero= numero,
+      valorUnitario=valorUnitario, 
+      quantidade=quantidade, 
+      valorTotal=valorTotal    
     }
+
 }

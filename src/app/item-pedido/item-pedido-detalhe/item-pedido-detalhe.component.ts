@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Produto } from '../produto';
 
 @Component({
@@ -10,6 +10,7 @@ export class ItemPedidoDetalheComponent implements OnInit {
 
   @Input()
   produtos: Produto[];
+  
   produtoSelecionado: Produto = new Produto();
   
   constructor() { 
@@ -26,13 +27,14 @@ export class ItemPedidoDetalheComponent implements OnInit {
   aumentaQuantidade() {
     this.produtoSelecionado.quantidade++;
     this.produtoSelecionado.valorTotal = 
-      this.produtoSelecionado.quantidade * this.produtoSelecionado.valorUnitario;
+    this.produtoSelecionado.quantidade * this.produtoSelecionado.valorUnitario;
   }
 
   diminuiQuantidade() {
     this.produtoSelecionado.quantidade--;
     this.produtoSelecionado.valorTotal = 
-      this.produtoSelecionado.quantidade * this.produtoSelecionado.valorUnitario; 
+    this.produtoSelecionado.quantidade * this.produtoSelecionado.valorUnitario; 
   }
+
 
 }

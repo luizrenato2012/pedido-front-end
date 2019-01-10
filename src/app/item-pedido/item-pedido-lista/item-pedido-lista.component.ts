@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ItemPedidoService } from '../item-pedido.service';
 import { ItemPedido } from '../item-pedido';
 import { Produto } from '../produto';
@@ -14,6 +14,8 @@ export class ItemPedidoListaComponent implements OnInit {
 
 	private itemSelecionado: ItemPedido;
 	private produtos: Produto[];
+	
+	private valorTotal: number=9999;
 
 	constructor(private itemPedidoService: ItemPedidoService,private sanitizer : DomSanitizer) {
 		//console.log('criando ItemPedidoComponent');
@@ -28,7 +30,9 @@ export class ItemPedidoListaComponent implements OnInit {
 		//console.log('Iniciando itens');
 		this.itemPedidoService.listaItens()
 			.subscribe(resposta => {
-				this.produtos = resposta.itens;
+				this.produtos = resposta.produtos;
+				console.log('Valor Total ' + resposta.valorTotal);
+				this.valorTotal = resposta.valorTotal;
 				this.itemPedidoService.setProdutos(this.produtos);
 				this.produtos.forEach(produto => 
 					produto.imagemSafe = this.sanitizer
@@ -37,33 +41,14 @@ export class ItemPedidoListaComponent implements OnInit {
 			});
 	}
 
-	// template(produtos: Produto[]) {
-	// 	let content =
-	// 		`<div class="list-group">
-	// 			${produtos.map(item =>
-	// 			`<a href="#" class="list-group-item comando"  data-toggle="modal" data-target="#myModal" (click)="seleciona(${item.idProduto})">
-	// 		<input type="hidden" name="id_item" value="${item.idItem}"/>
-	// 				<table>
-	// 					<tbody>
-	// 						<tr>
-	// 							<td rowspan="3"><img src="data:image/png;base64, ${item.imagem}" alt="sem imagem"	width=50 height=40></td>
-	// 							<td><font size=2> ${item.nome} </font></td>
-	// 						</tr>
-	// 						<tr>
-	// 							<td><font size=1> ${item.descricao} </font></td>
-	// 						</tr>
-	// 						<tr>
-	// 							<td><font size=1 color="red"> ${item.valorUnitario} </font></td>
-	// 						</tr>
-	// 					</tbody>
-	// 				</table>
-	// 			</a> 
-				
-	// 			`).join('')}
-	// 			</div>`;
-	// 	let divTable = document.querySelector('#table_produtos');
-	// 	divTable.innerHTML = content;
-	// }
+	adicionaItem() {
+		this.itemPedidoService.totalizaItens(this.produtos)
+		.subscribe( respostaItem => {
+			this.atualizaValoresTotaisItem(respostaItem.itens);
+			this.valorTotal = respostaItem.valorTotal;
+		  }
+		);
+	}
 
 	
 
