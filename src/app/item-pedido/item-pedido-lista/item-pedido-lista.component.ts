@@ -4,6 +4,7 @@ import { ItemPedido } from '../item-pedido';
 import { Produto } from '../produto';
 import { templateJitUrl } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ConsoleReporter } from 'jasmine';
 
 @Component({
 	selector: 'app-item-pedido-lista',
@@ -48,6 +49,15 @@ export class ItemPedidoListaComponent implements OnInit {
 			this.valorTotal = respostaItem.valorTotal;
 		  }
 		);
+	}
+
+	atualizaValoresTotaisItem(itens: ItemPedido[]) {
+
+		this.itemPedidoService.totalizaItens(this.produtos)
+			.subscribe( resposta => {
+				console.log(`resposta total item: ${resposta.valorTotalItem} 
+							total carronho: ${resposta.valorTotal}`);
+			})
 	}
 
 	

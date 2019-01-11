@@ -13,6 +13,7 @@ export class Produto {
     numero=0;
     idItem=0;
     imagemSafe : SafeResourceUrl;
+    atual: boolean=false;
 
 
   /*  constructor(descricao='',nome="",

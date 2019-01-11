@@ -28,8 +28,6 @@ export class ItemPedidoService {
 
   totalizaItens(produtos: Produto[]) : Observable<RespostaItemTotaliza> {
     let itensAlterados = this.getItensAlterados(produtos);
-    let itens=[];
-    let total=0;
     return this.httpClient.post<RespostaItemTotaliza>(API_TOTALIZA, itensAlterados);
   }
 
@@ -43,9 +41,11 @@ export class ItemPedidoService {
           item.numero,
           item.valorUnitario, 
           item.quantidade, 
-          item.valorTotal
+          item.valorTotal,
+          item.atual
       )
     });
-  return retorno;
+    return retorno;
   }
+
 }
