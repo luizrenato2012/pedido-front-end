@@ -5,7 +5,7 @@
 
   <div class="table-wrapper-scroll-y" id="table_produtos">
       <div class="list-group">
-        <app-item-pedido-detalhe  [produtos]="produtos"></app-item-pedido-detalhe>
+        <app-item-pedido-grupo  [produtos]="produtos" (valorTotal)="recebeValorTotal($event)"></app-item-pedido-grupo>
      </div>
   </div>
   
@@ -22,14 +22,4 @@
     </table>
   </a>
   
-  <!-- campo do valor do carrinho-->
-  <!-- <button class="list-group-item" id="btnCarrinho">
-    <div class="row"style="padding: 10px">
-      <div class="col-md-1">CARRINHO</div>
-      <div class="col-md-2" style="color:red; padding-left:25px;">R$ 1.000,00</div>
-      <div class="col-md-4"></div>
-      <div class="col-md-5"></div>
-    </div>
-  </button>
-</div>  -->
 <!--Div do containner -->

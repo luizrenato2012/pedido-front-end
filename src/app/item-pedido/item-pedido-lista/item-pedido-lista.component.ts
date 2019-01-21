@@ -12,13 +12,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ItemPedidoListaComponent implements OnInit {
 
-	private itemSelecionado: ItemPedido;
 	private produtos: Produto[];
 	
 	private valorTotal: number=9999;
 
 	constructor(private itemPedidoService: ItemPedidoService,private sanitizer : DomSanitizer) {
-		//console.log('criando ItemPedidoComponent');
 		this.produtos = [];
 	}
 
@@ -41,20 +39,8 @@ export class ItemPedidoListaComponent implements OnInit {
 			});
 	}
 
-	adicionaItem() {
-		this.itemPedidoService.totalizaItens(this.produtos)
-		.subscribe( respostaItem => {
-			this.itemSelecionado.valorTotal = respostaItem.valorTotalItem;
-			this.itemSelecionado.atual=false;
-			this.valorTotal = respostaItem.valorTotal;
-		  }
-		);
+	recebeValorTotal(valor:number) {
+		this.valorTotal = valor;
 	}
-
-	atualizaValoresTotaisItem(valor: number) {
-	
-	}
-
-	
 
 }

@@ -37,33 +37,33 @@
       <div class="modal-body">
         <div class="wrap-input3 input3-select">
           <div align="center">
-            <label id="lblNome">{{produtoSelecionado.nome}} </label>
+            <label id="lblNome">{{item.nome}} </label>
           </div>
           <img id="imgItem" src="assets/img/vidro.jpeg" alt="some text" width=120 height=90><br>
-          <font size=1 id="lblDescricao">{{produtoSelecionado.descricao}}</font>
+          <font size=1 id="lblDescricao">{{item.descricao}}</font>
 
           <table>
             <tbody>
               <tr>
                 <td id="cel">
-                  <font size=2 color="red" id="lblPreco">{{produtoSelecionado.valorUnitario}} </font>
+                  <font size=2 color="red" id="lblPreco">{{item.valorUnitario}} </font>
                 </td>
                 <td id="cel1">
                   <div data-app="product.quantity" id="quantidade">
                     <span id="span_erro_carrinho" class="blocoAlerta" style="display: none;">Selecione uma produto</span>
                     <input type="button" id="btnMinus" value='-'  (click)="diminuiQuantidade()"/>
                     <input type="text" id="edtQuantidade" name="edtQuantidade" class="text" style="text-align: center"
-                      size="1" value="0" maxlength="5" [value]="produtoSelecionado.quantidade"/>
+                      size="1" value="0" maxlength="5" [value]="item.quantidade"/>
                     <input type="button" id="btnPlus" value='+' (click)="aumentaQuantidade()"/>
                   </div>
                 </td>
               </tr>
               <tr>
                 <td id="cel">
-                  <font size=2 color="red" id="lblValorTotal">{{produtoSelecionado.valorTotal}} </font>
+                  <font size=2 color="red" id="lblValorTotal">{{item.valorTotal}} </font>
                 </td>
                 <td id="cel1">
-                   <a href="#" id="btnAdiciona" class="list-group-item" data-toggle="modal" data-target="#myModal">
+                   <a href="#" id="btnAdiciona" class="list-group-item" data-toggle="modal" data-target="#myModal" (click)="adicionaItem()">
                     <div align="center">
                       <img src="assets/img/adicionar.jpg" alt="sem imagem no momento" width="15" height="15">
                     </div>
@@ -74,5 +74,5 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 </div>

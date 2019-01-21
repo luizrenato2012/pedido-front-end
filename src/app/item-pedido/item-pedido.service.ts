@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 import { ItemPedido } from './item-pedido';
 import { RespostaItemTotaliza } from './resposta-item-totaliza';
 
-const HOST_API = "http://192.168.30.1:8080";
+const HOST_API = "http://localhost:8080";
 const API_URL=       HOST_API +"/api/itens/inicio";
-const API_TOTALIZA=  HOST_API +"/api/itens/total";
+const API_TOTALIZA=  HOST_API +"/api/itens/total_item";
 @Injectable({
   providedIn: 'root'
 })
