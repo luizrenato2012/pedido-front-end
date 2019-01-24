@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { ItemPedido } from '../item-pedido';
 import { Produto } from '../produto';
 import { RespostaItemTotaliza } from '../resposta-item-totaliza';
@@ -15,34 +15,47 @@ export class ItemPedidoGrupoComponent implements OnInit {
 
   private valorTotal = new EventEmitter();
   
+  @Input()
   produtos: Produto[];
 
-  item : Produto;
-  itemSelecionado : Produto;
+  item  = new Produto();
+  itemSelecionado = new Produto();
   
-  constructor(private itemPedidoService : ItemPedidoService) { }
+  constructor(private itemPedidoService : ItemPedidoService) {
+    console.log('criando itemPedidoGrupo');
+   }
+
 
   ngOnInit() {
   }
 
   aumentaQuantidade() {
-    this.item.quantidade++;
-    this.item.valorTotal = 
-    this.item.quantidade * this.item.valorUnitario;
+    console.log(`aumentando item JSON.stringfy(${this.itemSelecionado})`);
+    this.itemSelecionado.quantidade++;
+    this.itemSelecionado.valorTotal = this.itemSelecionado.valorUnitario * this.itemSelecionado.quantidade;
+ //   this.item.quantidade * this.item.valorUnitario;
   }
 
   diminuiQuantidade() {
-    this.item.quantidade--;
-    this.item.valorTotal = 
-    this.item.quantidade * this.item.valorUnitario; 
+    console.log('diminuindo quantidade');
+    this.itemSelecionado.quantidade = this.itemSelecionado.quantidade==0 ? 0 :
+       --this.itemSelecionado.quantidade;
+    this.itemSelecionado.valorTotal = this.itemSelecionado.valorUnitario * this.itemSelecionado.quantidade;
+    //this.item.quantidade * this.item.valorUnitario; 
   }
 
   adicionaItem(itens: Produto[]) {
 		this.itemPedidoService.totalizaItens(itens) // alterar totalizaItens p/ aceitar ItemPedido[]
-		.subscribe( respostaItem => {
-      this.valorTotal.emit( respostaItem);
+		  .subscribe( respostaItem => {
+        console.log('enviando valor total ' + JSON.stringify(respostaItem));
+        this.valorTotal.emit( respostaItem);
 		  }
 		);
-	}
+  }
+  
+  seleciona(item: Produto) {
+    console.log(`selecionando item JSON.stringfy(${item})`);
+    this.itemSelecionado = item;
+  }
 
 }

@@ -40,6 +40,7 @@ export class ItemPedidoListaComponent implements OnInit {
 	}
 
 	recebeValorTotal(valor:number) {
+		console.log('recebendo valor '+ valor);
 		this.valorTotal = valor;
 	}
 
