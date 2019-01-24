@@ -44,8 +44,8 @@ export class ItemPedidoGrupoComponent implements OnInit {
     //this.item.quantidade * this.item.valorUnitario; 
   }
 
-  adicionaItem(itens: Produto[]) {
-		this.itemPedidoService.totalizaItens(itens) // alterar totalizaItens p/ aceitar ItemPedido[]
+  adicionaItem() {
+		this.itemPedidoService.totalizaItens(this.produtos) // alterar totalizaItens p/ aceitar ItemPedido[]
 		  .subscribe( respostaItem => {
         console.log('enviando valor total ' + JSON.stringify(respostaItem));
         this.valorTotal.emit( respostaItem);
