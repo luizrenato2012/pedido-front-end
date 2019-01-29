@@ -1,8 +1,9 @@
-import { Component, OnInit, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ItemPedido } from '../item-pedido';
 import { Produto } from '../produto';
 import { RespostaItemTotaliza } from '../resposta-item-totaliza';
 import { ItemPedidoService } from '../item-pedido.service';
+import { resetApplicationState } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-item-pedido-grupo',
@@ -13,6 +14,7 @@ export class ItemPedidoGrupoComponent implements OnInit {
 
   private resposta : RespostaItemTotaliza;
 
+  @Output()
   private valorTotal = new EventEmitter();
   
   @Input()
@@ -45,10 +47,12 @@ export class ItemPedidoGrupoComponent implements OnInit {
   }
 
   adicionaItem() {
+    this.itemSelecionado.atual=true;
 		this.itemPedidoService.totalizaItens(this.produtos) // alterar totalizaItens p/ aceitar ItemPedido[]
 		  .subscribe( respostaItem => {
-        console.log('enviando valor total ' + JSON.stringify(respostaItem));
-        this.valorTotal.emit( respostaItem);
+          console.log('enviando valor total ' + JSON.stringify(respostaItem));
+          this.itemSelecionado.valorTotal = respostaItem.valorTotalItem;
+          this.valorTotal.emit( respostaItem);
 		  }
 		);
   }

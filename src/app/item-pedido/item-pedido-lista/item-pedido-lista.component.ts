@@ -4,6 +4,7 @@ import { ItemPedido } from '../item-pedido';
 import { Produto } from '../produto';
 import { templateJitUrl } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RespostaTotaliza } from '../resposta-totaliza';
 
 @Component({
 	selector: 'app-item-pedido-lista',
@@ -39,9 +40,9 @@ export class ItemPedidoListaComponent implements OnInit {
 			});
 	}
 
-	recebeValorTotal(valor:number) {
+	recebeValorTotal(valor: RespostaTotaliza) {
 		console.log('recebendo valor '+ valor);
-		this.valorTotal = valor;
+		this.valorTotal = valor.valorTotal;
 	}
 
 }
