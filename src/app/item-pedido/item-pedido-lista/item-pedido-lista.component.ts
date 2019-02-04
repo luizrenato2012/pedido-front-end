@@ -18,6 +18,7 @@ export class ItemPedidoListaComponent implements OnInit {
 	private valorTotal: number=9999;
 
 	constructor(private itemPedidoService: ItemPedidoService,private sanitizer : DomSanitizer) {
+		console.log (' crinado ItemPedidoListaComponent')
 		this.produtos = [];
 	}
 
@@ -26,7 +27,6 @@ export class ItemPedidoListaComponent implements OnInit {
 	}
 
 	iniciaItens() {
-		//console.log('Iniciando itens');
 		this.itemPedidoService.listaItens()
 			.subscribe(resposta => {
 				this.produtos = resposta.produtos;

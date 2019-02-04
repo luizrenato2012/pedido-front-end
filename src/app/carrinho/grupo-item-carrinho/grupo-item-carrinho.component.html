@@ -1,0 +1,41 @@
+<div class="container">
+  <div align="center">
+    <font size=5 color="green"> Vidraçaria Tia Gusta </font>
+  </div>
+
+  <div class="table-wrapper-scroll-y" id="table_produtos">
+    <div class="list-group">
+      <app-item-carrinho [produtos]="produtos" (valorTotal)="recebeValorTotal($event)"></app-item-carrinho>
+    </div>
+  </div>
+
+  <!-- botoes ITENS e FINALIZAR -->
+  <table>
+    <tbody>
+
+      <tr>
+        <td id="cel1"> <a routerLink="/itens" class="list-group-item">
+            <div align="center">
+              <font size=2 color="green"> + ÍTENS </font>
+            </div>
+          </a>
+        </td>
+        <td id="cel1"> 
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#modalPlanoPagamento">
+              <div align="center">
+                <font size=2 color="green"> FINALIZAR </font>
+              </div>
+            </a>
+        </td>
+      </tr>
+      <tr>
+        <td id="cel" align="right">
+          <font size=3> Total </font>
+        </td>
+        <td id="cel1" align="right">
+          <font size=3> R$ 500.00 </font>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>

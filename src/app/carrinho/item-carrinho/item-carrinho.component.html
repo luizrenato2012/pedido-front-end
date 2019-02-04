@@ -3,20 +3,27 @@
     <input type="hidden" name="id_item" value="{item.idItem}" />
     <table>
       <tbody>
+
         <tr>
-          <td rowspan="3"><img [src]="item.imagemSafe" alt="Sem imagem" width=50 height=40></td>
-          <td>
-            <font size=2> {{item.nome}} </font>
+          <td id="cel2">
+            <font size=1> {{item.quantidade}} </font>
           </td>
-        </tr>
-        <tr>
-          <td>
+
+          <td id="cel3">
+            <font size=1> {{item.nome}} </font>
+          </td>
+          <td id="cel3">
             <font size=1> {{item.descricao}} </font>
           </td>
-        </tr>
-        <tr>
+          <td id="cel2">
+            <font size=1 color="red"> {{item.valorTotal}} </font>
+          </td>
           <td>
-            <font size=1 color="red"> {{item.valorUnitario}} </font>
+            <a href="#" id="btnExcluiItem" class="list-group-item" data-toggle="modal" data-target="#myModal" (click)="excluiItem()">
+              <div align="center">
+                <img src="assets/img/lixeira.png" alt="sem imagem" width="15" height="15">
+              </div>
+            </a>
           </td>
         </tr>
       </tbody>
@@ -50,10 +57,10 @@
                 <td id="cel1">
                   <div data-app="product.quantity" id="quantidade">
                     <span id="span_erro_carrinho" class="blocoAlerta" style="display: none;">Selecione uma produto</span>
-                    <input type="button" id="btnMinus" value='-'  (click)="diminuiQuantidade()"/>
+                    <input type="button" id="btnMinus" value='-' (click)="diminuiQuantidade()" />
                     <input type="text" id="edtQuantidade" name="edtQuantidade" class="text" style="text-align: center"
-                      size="1" value="0" maxlength="5" [value]="itemSelecionado.quantidade"/>
-                    <input type="button" id="btnPlus" value='+' (click)="aumentaQuantidade()"/>
+                      size="1" value="0" maxlength="5" [value]="itemSelecionado.quantidade" />
+                    <input type="button" id="btnPlus" value='+' (click)="aumentaQuantidade()" />
                   </div>
                 </td>
               </tr>
@@ -62,16 +69,18 @@
                   <font size=2 color="red" id="lblValorTotal">{{itemSelecionado.valorTotal}} </font>
                 </td>
                 <td id="cel1">
-                   <a href="#" id="btnAdiciona" class="list-group-item" data-toggle="modal" data-target="#myModal" (click)="adicionaItem()">
+                  <a href="#" id="btnAdiciona" class="list-group-item" data-toggle="modal" data-target="#myModal"
+                    (click)="adicionaItem()">
                     <div align="center">
                       <img src="assets/img/adicionar.jpg" alt="sem imagem no momento" width="15" height="15">
                     </div>
-                  </a></td>
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-</div>
+  </div>
 </div>

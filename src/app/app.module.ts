@@ -3,14 +3,18 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ItemPedidoModule } from './item-pedido/item-pedido.module';
+import { CarrinhoModule } from './carrinho/carrinho.module';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    ItemPedidoModule
+    ItemPedidoModule,
+    CarrinhoModule,
+    AppRoutingModule
   ],
   providers: [{
     provide: LOCALE_ID,

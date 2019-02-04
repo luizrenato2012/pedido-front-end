@@ -32,14 +32,14 @@ export class ItemPedidoGrupoComponent implements OnInit {
   }
 
   aumentaQuantidade() {
-    console.log(`aumentando item JSON.stringfy(${this.itemSelecionado})`);
+    //console.log(`aumentando item JSON.stringfy(${this.itemSelecionado})`);
     this.itemSelecionado.quantidade++;
     this.itemSelecionado.valorTotal = this.itemSelecionado.valorUnitario * this.itemSelecionado.quantidade;
  //   this.item.quantidade * this.item.valorUnitario;
   }
 
   diminuiQuantidade() {
-    console.log('diminuindo quantidade');
+    //console.log('diminuindo quantidade');
     this.itemSelecionado.quantidade = this.itemSelecionado.quantidade==0 ? 0 :
        --this.itemSelecionado.quantidade;
     this.itemSelecionado.valorTotal = this.itemSelecionado.valorUnitario * this.itemSelecionado.quantidade;
@@ -58,7 +58,7 @@ export class ItemPedidoGrupoComponent implements OnInit {
   }
   
   seleciona(item: Produto) {
-    console.log(`selecionando item JSON.stringfy(${item})`);
+    //console.log(`selecionando item JSON.stringfy(${item})`);
     this.itemSelecionado = item;
   }
 
