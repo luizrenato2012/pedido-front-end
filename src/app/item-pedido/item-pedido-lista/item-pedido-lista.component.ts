@@ -45,4 +45,8 @@ export class ItemPedidoListaComponent implements OnInit {
 		this.valorTotal = valor.valorTotal;
 	}
 
+	gravaItens() {
+		console.log('Gravando itens');
+	}
+
 }
