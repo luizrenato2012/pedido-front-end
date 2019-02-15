@@ -17,6 +17,8 @@ export class ItemPedidoListaComponent implements OnInit {
 	
 	private valorTotal: number=9999;
 
+	private idPedido: Number;
+
 	constructor(private itemPedidoService: ItemPedidoService,private sanitizer : DomSanitizer) {
 		console.log (' crinado ItemPedidoListaComponent')
 		this.produtos = [];
@@ -46,7 +48,9 @@ export class ItemPedidoListaComponent implements OnInit {
 	}
 
 	gravaItens() {
-		console.log('Gravando itens');
+		this.itemPedidoService.gravaPedido(this.produtos)
+			.subscribe(idPedido => this.idPedido = idPedido);
+		console.log('Pedido gravado ['+ this.idPedido); 	
 	}
 
 }

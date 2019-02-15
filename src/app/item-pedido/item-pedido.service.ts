@@ -9,6 +9,8 @@ import { RespostaItemTotaliza } from './resposta-item-totaliza';
 const HOST_API = "http://localhost:8080";
 const API_URL=       HOST_API +"/api/itens/inicio";
 const API_TOTALIZA=  HOST_API +"/api/itens/total_item";
+const APIT_PEDIDO = HOST_API +"/api/pedidos";
+
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +50,13 @@ export class ItemPedidoService {
       )
     });
     return retorno;
+  }
+
+  gravaPedido(produtos: Produto[]) {
+    let alterados = produtos.filter(item => ( item.valorTotal != undefined && item.valorTotal != 0  
+      || (item.idItem!= undefined ||  item.idItem!=null) ));
+      return this.httpClient.put<Number>(APIT_PEDIDO, produtos);
+
   }
 
 }
